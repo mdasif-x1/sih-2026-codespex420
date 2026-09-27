@@ -1,0 +1,1276 @@
+{
+  "users": [
+    {
+      "id": "usr_app_aarav",
+      "email": "aarav.st.scholar@gmail.com",
+      "name": "Aarav Kumar",
+      "role": "APPLICANT",
+      "avatar": "AK",
+      "passwordHash": "$2b$10$zA2.UKNgFMaT.zMLG45zq.xsthnivts2q3byaF1N1hPxUcoMpqYtW"
+    },
+    {
+      "id": "usr_inst_iitkgp",
+      "email": "nodal.scholarship@iitkgp.ac.in",
+      "name": "Dr. S. P. Hansda",
+      "role": "INSTITUTE",
+      "institution": "IIT Kharagpur",
+      "avatar": "SH",
+      "passwordHash": "$2b$10$zA2.UKNgFMaT.zMLG45zq.xsthnivts2q3byaF1N1hPxUcoMpqYtW"
+    },
+    {
+      "id": "usr_off_rajesh",
+      "email": "officer.review@tribal.gov.in",
+      "name": "Dr. Rajesh Sharma",
+      "role": "OFFICER",
+      "department": "Ministry of Tribal Affairs - Scholarship Division",
+      "avatar": "RS",
+      "passwordHash": "$2b$10$zA2.UKNgFMaT.zMLG45zq.xsthnivts2q3byaF1N1hPxUcoMpqYtW"
+    },
+    {
+      "id": "usr_mon_dir",
+      "email": "monitoring.dir@tribal.gov.in",
+      "name": "Sunil M. Oraon",
+      "role": "MONITORING",
+      "department": "Directorate of Tribal Welfare Analytics",
+      "avatar": "SO",
+      "passwordHash": "$2b$10$zA2.UKNgFMaT.zMLG45zq.xsthnivts2q3byaF1N1hPxUcoMpqYtW"
+    },
+    {
+      "id": "usr_admin_js",
+      "email": "js.scholarship@tribal.gov.in",
+      "name": "Dr. V. K. Meena",
+      "role": "ADMIN",
+      "department": "Joint Secretary (Scholarship & Schemes)",
+      "avatar": "VM",
+      "passwordHash": "$2b$10$zA2.UKNgFMaT.zMLG45zq.xsthnivts2q3byaF1N1hPxUcoMpqYtW"
+    }
+  ],
+  "schemes": [
+    {
+      "id": "scheme_nfst",
+      "code": "NFST",
+      "name": "National Fellowship for ST Students",
+      "shortDescription": "Financial assistance to Scheduled Tribe students for pursuing M.Phil and Ph.D. degrees in Indian Universities.",
+      "fullDescription": "The National Fellowship for ST Students scheme provides financial support to ST students wishing to pursue higher studies leading to M.Phil and Ph.D. degrees in Science, Humanities, Social Sciences, and Engineering/Technology. Scheme covers fellowship stipend, contingency grants, and institutional charges.",
+      "ministry": "Ministry of Tribal Affairs",
+      "targetCategory": "Scheduled Tribes (Higher Education - M.Phil / Ph.D)",
+      "currentVersionId": "ver_nfst_2026_1",
+      "applicationPeriod": {
+        "startDate": "2026-08-01",
+        "endDate": "2026-10-31"
+      },
+      "totalSeats": 750,
+      "budgetAllocatedCr": 45,
+      "versions": [
+        {
+          "versionId": "ver_nfst_2026_1",
+          "schemeId": "scheme_nfst",
+          "versionTag": "2026.1",
+          "status": "PUBLISHED",
+          "publishedAt": "2026-07-01T10:00:00Z",
+          "publishedBy": "Dr. V. K. Meena (Joint Secretary)",
+          "effectiveFrom": "2026-08-01",
+          "effectiveTo": "2026-10-31",
+          "selectionMethod": "MERIT_COMPOSITE",
+          "workflowStages": [
+            "SUBMITTED",
+            "DOCUMENT_CHECK",
+            "INSTITUTE_VERIFICATION",
+            "OFFICER_REVIEW",
+            "SELECTION",
+            "HUMAN_APPROVAL",
+            "DISBURSEMENT_PENDING",
+            "DISBURSED"
+          ],
+          "minMarksPercentage": 55,
+          "maxFamilyIncome": 600000,
+          "formFields": [
+            {
+              "id": "field_pg_marks",
+              "label": "Post-Graduation Marks (%)",
+              "fieldType": "number",
+              "placeholder": "e.g. 68.5",
+              "required": true,
+              "section": "academic",
+              "validationRules": {
+                "min": 0,
+                "max": 100
+              }
+            },
+            {
+              "id": "field_research_topic",
+              "label": "Proposed Research Topic / Area",
+              "fieldType": "text",
+              "placeholder": "e.g. Indigenous Resource Management in Tribal Belts",
+              "required": true,
+              "section": "scheme_specific"
+            },
+            {
+              "id": "field_guide_name",
+              "label": "Research Supervisor / Guide Name",
+              "fieldType": "text",
+              "placeholder": "e.g. Dr. Sunita Kujur",
+              "required": true,
+              "section": "academic"
+            },
+            {
+              "id": "field_university_reg",
+              "label": "University Ph.D Registration Number",
+              "fieldType": "text",
+              "placeholder": "e.g. PHD/2026/ST/094",
+              "required": true,
+              "section": "academic"
+            }
+          ],
+          "eligibilityRules": [
+            {
+              "id": "rule_st_cat",
+              "field": "stCategory",
+              "fieldLabel": "ST Category Validity",
+              "operator": "EQUALS",
+              "value": "VALID_ST",
+              "errorMessage": "Applicant must hold a valid Scheduled Tribe (ST) Certificate issued by a competent authority.",
+              "category": "ST_CATEGORY"
+            },
+            {
+              "id": "rule_min_marks",
+              "field": "marksPercentage",
+              "fieldLabel": "Minimum PG Marks Percentage",
+              "operator": "GREATER_THAN_OR_EQUAL",
+              "value": 55,
+              "errorMessage": "Minimum 55% marks in Master Degree required for NFST fellowship.",
+              "category": "ACADEMIC"
+            },
+            {
+              "id": "rule_income",
+              "field": "annualFamilyIncome",
+              "fieldLabel": "Annual Family Income Limit",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": 600000,
+              "errorMessage": "Annual family income must not exceed ₹6,00,000 per annum.",
+              "category": "INCOME"
+            }
+          ],
+          "documentRequirements": [
+            {
+              "id": "doc_req_st_cert",
+              "type": "ST_CERTIFICATE",
+              "label": "Scheduled Tribe (ST) Certificate",
+              "description": "Issued by Sub-Divisional Officer (SDO) or Tehsildar",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf",
+                "jpg",
+                "png"
+              ],
+              "extractionFields": [
+                "name",
+                "certificateNo",
+                "casteCommunity",
+                "issuingAuthority",
+                "issueDate"
+              ]
+            },
+            {
+              "id": "doc_req_income",
+              "type": "INCOME_CERTIFICATE",
+              "label": "Income Certificate (FY 2025-26)",
+              "description": "Issued by competent Revenue Officer (Not below Tehsildar rank)",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf",
+                "jpg",
+                "png"
+              ],
+              "extractionFields": [
+                "name",
+                "annualIncome",
+                "certificateNo",
+                "validityPeriod"
+              ]
+            },
+            {
+              "id": "doc_req_marksheet",
+              "type": "PG_MARKSHEET",
+              "label": "Post-Graduation Degree & Marksheet",
+              "description": "Final Consolidated Marksheet showing overall percentage",
+              "required": true,
+              "maxSizeMb": 10,
+              "allowedFormats": [
+                "pdf"
+              ],
+              "extractionFields": [
+                "studentName",
+                "universityName",
+                "totalPercentage",
+                "yearOfPassing"
+              ]
+            },
+            {
+              "id": "doc_req_admission",
+              "type": "ADMISSION_PROOF",
+              "label": "Ph.D / M.Phil Admission Letter & Registration Proof",
+              "description": "Confirmation letter from recognized university",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf"
+              ],
+              "extractionFields": [
+                "studentName",
+                "registrationNo",
+                "courseName",
+                "department"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scheme_nos",
+      "code": "NOS",
+      "name": "National Overseas Scholarship for ST Students",
+      "shortDescription": "Financial assistance to selected ST students for pursuing Master degree, Ph.D and Post-Doctoral research abroad.",
+      "fullDescription": "The National Overseas Scholarship (NOS) provides financial support to ST students for undertaking higher studies abroad in specified fields of study such as Engineering, Management, Pure & Applied Sciences, Agricultural Sciences, Medicine, and Humanities/Social Sciences.",
+      "ministry": "Ministry of Tribal Affairs",
+      "targetCategory": "Scheduled Tribes (Overseas Studies)",
+      "currentVersionId": "ver_nos_2026_1",
+      "applicationPeriod": {
+        "startDate": "2026-07-15",
+        "endDate": "2026-11-15"
+      },
+      "totalSeats": 100,
+      "budgetAllocatedCr": 30,
+      "versions": [
+        {
+          "versionId": "ver_nos_2026_1",
+          "schemeId": "scheme_nos",
+          "versionTag": "2026.1",
+          "status": "PUBLISHED",
+          "publishedAt": "2026-06-15T09:00:00Z",
+          "publishedBy": "Dr. V. K. Meena (Joint Secretary)",
+          "effectiveFrom": "2026-07-15",
+          "effectiveTo": "2026-11-15",
+          "selectionMethod": "MERIT_COMPOSITE",
+          "workflowStages": [
+            "SUBMITTED",
+            "DOCUMENT_CHECK",
+            "INSTITUTE_VERIFICATION",
+            "OFFICER_REVIEW",
+            "SELECTION",
+            "HUMAN_APPROVAL",
+            "DISBURSEMENT_PENDING",
+            "DISBURSED"
+          ],
+          "minMarksPercentage": 60,
+          "maxFamilyIncome": 600000,
+          "formFields": [
+            {
+              "id": "field_foreign_uni",
+              "label": "Foreign University Name & Country",
+              "fieldType": "text",
+              "placeholder": "e.g. University of Edinburgh, United Kingdom",
+              "required": true,
+              "section": "academic"
+            },
+            {
+              "id": "field_qs_ranking",
+              "label": "QS World University Rank of University",
+              "fieldType": "number",
+              "placeholder": "e.g. 27",
+              "required": true,
+              "section": "academic"
+            },
+            {
+              "id": "field_passport_no",
+              "label": "Valid Indian Passport Number",
+              "fieldType": "text",
+              "placeholder": "e.g. Z9482103",
+              "required": true,
+              "section": "personal"
+            }
+          ],
+          "eligibilityRules": [
+            {
+              "id": "rule_nos_st",
+              "field": "stCategory",
+              "fieldLabel": "ST Category Validity",
+              "operator": "EQUALS",
+              "value": "VALID_ST",
+              "errorMessage": "Must belong to Scheduled Tribe (ST).",
+              "category": "ST_CATEGORY"
+            },
+            {
+              "id": "rule_nos_marks",
+              "field": "marksPercentage",
+              "fieldLabel": "Minimum Qualifying Marks",
+              "operator": "GREATER_THAN_OR_EQUAL",
+              "value": 60,
+              "errorMessage": "Minimum 60% marks in qualifying degree required.",
+              "category": "ACADEMIC"
+            },
+            {
+              "id": "rule_nos_income",
+              "field": "annualFamilyIncome",
+              "fieldLabel": "Annual Income Limit",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": 600000,
+              "errorMessage": "Annual family income must not exceed ₹6,00,000.",
+              "category": "INCOME"
+            }
+          ],
+          "documentRequirements": [
+            {
+              "id": "doc_nos_st",
+              "type": "ST_CERTIFICATE",
+              "label": "ST Certificate",
+              "description": "Competent Authority Issued ST Certificate",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf"
+              ],
+              "extractionFields": [
+                "name",
+                "certificateNo"
+              ]
+            },
+            {
+              "id": "doc_nos_offer",
+              "type": "UNCONDITIONAL_OFFER_LETTER",
+              "label": "Unconditional Offer Letter from Foreign University",
+              "description": "Official unconditional admission offer",
+              "required": true,
+              "maxSizeMb": 10,
+              "allowedFormats": [
+                "pdf"
+              ],
+              "extractionFields": [
+                "studentName",
+                "universityName",
+                "courseTitle",
+                "tuitionFee"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scheme_topclass",
+      "code": "TOPCLASS",
+      "name": "Top Class Education Scheme for ST Students",
+      "shortDescription": "Scholarship for ST students pursuing degree/diploma courses in notified premier institutes like IITs, NITs, IIMs, AIIMS, and NLUs.",
+      "fullDescription": "Provides full tuition fee waiver, living expenses, book allowance, and computer allowance to ST students studying in premier institutions of national importance.",
+      "ministry": "Ministry of Tribal Affairs",
+      "targetCategory": "Scheduled Tribes (Undergraduate & Postgraduate in Premier Institutes)",
+      "currentVersionId": "ver_topclass_2026_1",
+      "applicationPeriod": {
+        "startDate": "2026-08-15",
+        "endDate": "2026-11-30"
+      },
+      "totalSeats": 1000,
+      "budgetAllocatedCr": 55,
+      "versions": [
+        {
+          "versionId": "ver_topclass_2026_1",
+          "schemeId": "scheme_topclass",
+          "versionTag": "2026.1",
+          "status": "PUBLISHED",
+          "publishedAt": "2026-07-15T09:00:00Z",
+          "publishedBy": "Dr. V. K. Meena (Joint Secretary)",
+          "effectiveFrom": "2026-08-15",
+          "effectiveTo": "2026-11-30",
+          "selectionMethod": "INCOME_PRIORITY",
+          "workflowStages": [
+            "SUBMITTED",
+            "DOCUMENT_CHECK",
+            "INSTITUTE_VERIFICATION",
+            "OFFICER_REVIEW",
+            "SELECTION",
+            "HUMAN_APPROVAL",
+            "DISBURSEMENT_PENDING",
+            "DISBURSED"
+          ],
+          "minMarksPercentage": 50,
+          "maxFamilyIncome": 600000,
+          "formFields": [
+            {
+              "id": "field_jee_rank",
+              "label": "Entrance Exam Rank (JEE / NEET / CAT / CLAT)",
+              "fieldType": "number",
+              "placeholder": "e.g. 1420",
+              "required": true,
+              "section": "academic"
+            },
+            {
+              "id": "field_tuition_fee",
+              "label": "Annual Tuition Fee (₹)",
+              "fieldType": "number",
+              "placeholder": "e.g. 225000",
+              "required": true,
+              "section": "financial"
+            }
+          ],
+          "eligibilityRules": [
+            {
+              "id": "rule_tc_st",
+              "field": "stCategory",
+              "fieldLabel": "ST Category",
+              "operator": "EQUALS",
+              "value": "VALID_ST",
+              "errorMessage": "Must belong to Scheduled Tribe category.",
+              "category": "ST_CATEGORY"
+            },
+            {
+              "id": "rule_tc_income",
+              "field": "annualFamilyIncome",
+              "fieldLabel": "Income Ceiling",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": 600000,
+              "errorMessage": "Total family income must not exceed ₹6 Lakhs per year.",
+              "category": "INCOME"
+            }
+          ],
+          "documentRequirements": [
+            {
+              "id": "doc_tc_st",
+              "type": "ST_CERTIFICATE",
+              "label": "ST Caste Certificate",
+              "description": "Digital ST Certificate",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf",
+                "jpg"
+              ],
+              "extractionFields": [
+                "name",
+                "certificateNo"
+              ]
+            },
+            {
+              "id": "doc_tc_fee",
+              "type": "FEE_RECEIPT",
+              "label": "Institute Fee Structure & Receipt",
+              "description": "Official fee breakdown signed by Dean/Registrar",
+              "required": true,
+              "maxSizeMb": 5,
+              "allowedFormats": [
+                "pdf"
+              ],
+              "extractionFields": [
+                "studentName",
+                "instituteName",
+                "totalFee"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "id": "PRG-2026-E2E-5352",
+      "schemeId": "sch_nfst_01",
+      "schemeCode": "NFST",
+      "schemeName": "National Fellowship for ST Students",
+      "schemeVersionId": "ver_nfst_2026_1",
+      "applicantId": "usr_app_aarav",
+      "applicantName": "Aarav Kumar",
+      "applicantEmail": "aarav.st.scholar@gmail.com",
+      "applicantPhone": "+91 98765 43210",
+      "stCertificateNo": "ST-2026-E2E-99",
+      "instituteName": "IIT Kharagpur",
+      "instituteCode": "AISHE-S-1102",
+      "courseName": "Ph.D. Computer Science",
+      "academicYear": "2026-2027",
+      "marksPercentage": 80,
+      "annualFamilyIncome": 240000,
+      "stage": "SELECTED",
+      "dynamicData": {},
+      "documents": [
+        {
+          "id": "doc_1790524025366_570",
+          "requirementId": "req_income_cert",
+          "documentType": "INCOME_CERTIFICATE",
+          "fileName": "income_certificate_2026.pdf",
+          "fileSizeMb": 1.5,
+          "fileUrl": "/uploads/income_certificate_2026.pdf",
+          "uploadedAt": "2026-09-27T15:47:05.366Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "Document Type",
+              "extractedValue": "INCOME_CERTIFICATE",
+              "expectedValue": "INCOME_CERTIFICATE",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        }
+      ],
+      "aiFindings": [],
+      "ruleEvaluations": [
+        {
+          "ruleId": "rule_st_cat",
+          "ruleName": "Scheduled Tribe Verification",
+          "category": "ST_CATEGORY",
+          "expectedCondition": "Valid ST Certificate Number",
+          "observedValue": "Certificate #ST-2026-E2E-99",
+          "result": "PASS",
+          "notes": "Validated against National Tribal Registry"
+        },
+        {
+          "ruleId": "rule_income_cap",
+          "ruleName": "Family Income Ceiling",
+          "category": "INCOME",
+          "expectedCondition": "Annual Family Income <= ₹6,00,000",
+          "observedValue": "₹2,40,000",
+          "result": "PASS",
+          "notes": "Income within mandated bracket"
+        },
+        {
+          "ruleId": "rule_academic_threshold",
+          "ruleName": "Minimum Academic Percentage",
+          "category": "ACADEMIC",
+          "expectedCondition": "Qualifying Marks >= 55%",
+          "observedValue": "80%",
+          "result": "PASS",
+          "notes": "Academic criteria satisfied"
+        },
+        {
+          "ruleId": "rule_institution_accreditation",
+          "ruleName": "Recognized Institute Accreditation",
+          "category": "INSTITUTION",
+          "expectedCondition": "AISHE Accredited Institution",
+          "observedValue": "AISHE Code: AISHE-S-1102",
+          "result": "PASS",
+          "notes": "Institute verified via AISHE database portal"
+        }
+      ],
+      "compositeScore": 74,
+      "submittedAt": "2026-09-27T15:47:05.364Z",
+      "updatedAt": "2026-09-27T15:47:05.367Z",
+      "timeline": [
+        {
+          "id": "tl_1790524025364",
+          "timestamp": "2026-09-27T15:47:05.364Z",
+          "stage": "SUBMITTED",
+          "actor": "Aarav Kumar",
+          "actorRole": "APPLICANT",
+          "title": "Application Created & Submitted",
+          "description": "E2E workflow application created"
+        }
+      ]
+    },
+    {
+      "id": "PRG-2026-00182",
+      "schemeId": "scheme_nfst",
+      "schemeCode": "NFST",
+      "schemeName": "National Fellowship for ST Students",
+      "schemeVersionId": "ver_nfst_2026_1",
+      "applicantId": "usr_app_aarav",
+      "applicantName": "Aarav Kumar",
+      "applicantEmail": "aarav.st.scholar@gmail.com",
+      "applicantPhone": "+91 98765 43210",
+      "stCertificateNo": "ST/JH/2024/90821",
+      "instituteName": "Indian Institute of Technology, Kharagpur",
+      "instituteCode": "INST-IIT-KGP",
+      "courseName": "Ph.D in Environmental Geosciences",
+      "academicYear": "2026-2027",
+      "marksPercentage": 74.5,
+      "annualFamilyIncome": 240000,
+      "submittedAt": "2026-09-12T11:30:00Z",
+      "updatedAt": "2026-09-27T14:10:00Z",
+      "stage": "OFFICER_REVIEW",
+      "compositeScore": 91.4,
+      "rank": 1,
+      "dynamicData": {
+        "field_pg_marks": 74.5,
+        "field_research_topic": "Sustainable Ground Water Assessment in Santhal Parganas",
+        "field_guide_name": "Dr. Sunita Kujur",
+        "field_university_reg": "PHD/2026/ST/094"
+      },
+      "documents": [
+        {
+          "id": "doc_aarav_st",
+          "requirementId": "doc_req_st_cert",
+          "documentType": "ST_CERTIFICATE",
+          "fileName": "st_certificate_aarav.pdf",
+          "fileSizeMb": 1.4,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-12T10:15:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "name",
+              "extractedValue": "Aarav Kumar",
+              "expectedValue": "Aarav Kumar",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "certificateNo",
+              "extractedValue": "ST/JH/2024/90821",
+              "expectedValue": "ST/JH/2024/90821",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "casteCommunity",
+              "extractedValue": "Santhal (ST)",
+              "expectedValue": "ST",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "issuingAuthority",
+              "extractedValue": "SDO Ranchi",
+              "expectedValue": "SDO",
+              "matchScore": 95,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        },
+        {
+          "id": "doc_aarav_income",
+          "requirementId": "doc_req_income",
+          "documentType": "INCOME_CERTIFICATE",
+          "fileName": "income_certificate_2026.pdf",
+          "fileSizeMb": 2.1,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-26T16:20:00Z",
+          "status": "FLAGGED",
+          "extractions": [
+            {
+              "fieldName": "name",
+              "extractedValue": "Aarav Kumar Singh",
+              "expectedValue": "Aarav Kumar",
+              "matchScore": 91,
+              "isMatched": false
+            },
+            {
+              "fieldName": "annualIncome",
+              "extractedValue": "₹ 2,40,000 per annum",
+              "expectedValue": "240000",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "certificateNo",
+              "extractedValue": "INC/JH/2026/44120",
+              "expectedValue": "INC/JH/2026/44120",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": [
+            {
+              "id": "find_01",
+              "documentId": "doc_aarav_income",
+              "documentType": "INCOME_CERTIFICATE",
+              "title": "Potential Name Mismatch in Income Certificate",
+              "type": "NAME_MISMATCH",
+              "expected": "Aarav Kumar",
+              "observed": "Aarav Kumar Singh",
+              "confidence": 91,
+              "sourceDocName": "income_certificate_2026.pdf",
+              "sourcePage": 1,
+              "whyFlagged": "The extracted applicant surname \"Singh\" is appended in revenue record while application name is \"Aarav Kumar\". Father initials match.",
+              "recommendedAction": "MANUAL_REVIEW",
+              "status": "PENDING_REVIEW"
+            }
+          ]
+        },
+        {
+          "id": "doc_aarav_marks",
+          "requirementId": "doc_req_marksheet",
+          "documentType": "PG_MARKSHEET",
+          "fileName": "msc_geology_consolidated_marksheet.pdf",
+          "fileSizeMb": 3.8,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-12T10:20:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "studentName",
+              "extractedValue": "Aarav Kumar",
+              "expectedValue": "Aarav Kumar",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "universityName",
+              "extractedValue": "Central University of Jharkhand",
+              "expectedValue": "CUJ",
+              "matchScore": 95,
+              "isMatched": true
+            },
+            {
+              "fieldName": "totalPercentage",
+              "extractedValue": "74.5%",
+              "expectedValue": "74.5",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        },
+        {
+          "id": "doc_aarav_admission",
+          "requirementId": "doc_req_admission",
+          "documentType": "ADMISSION_PROOF",
+          "fileName": "iit_kgp_phd_admission_letter.pdf",
+          "fileSizeMb": 1.8,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-12T10:22:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "studentName",
+              "extractedValue": "Aarav Kumar",
+              "expectedValue": "Aarav Kumar",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "registrationNo",
+              "extractedValue": "PHD/2026/ST/094",
+              "expectedValue": "PHD/2026/ST/094",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        }
+      ],
+      "aiFindings": [
+        {
+          "id": "find_01",
+          "documentId": "doc_aarav_income",
+          "documentType": "INCOME_CERTIFICATE",
+          "title": "Potential Name Mismatch in Income Certificate",
+          "type": "NAME_MISMATCH",
+          "expected": "Aarav Kumar",
+          "observed": "Aarav Kumar Singh",
+          "confidence": 91,
+          "sourceDocName": "income_certificate_2026.pdf",
+          "sourcePage": 1,
+          "whyFlagged": "The extracted applicant surname \"Singh\" is appended in revenue record while application name is \"Aarav Kumar\". Father initials match.",
+          "recommendedAction": "MANUAL_REVIEW",
+          "status": "PENDING_REVIEW"
+        }
+      ],
+      "deficiency": {
+        "id": "def_aarav_01",
+        "applicationId": "PRG-2026-00182",
+        "documentType": "INCOME_CERTIFICATE",
+        "documentId": "doc_aarav_income",
+        "issueType": "INCOME_DOCUMENT_NAME_VARIANCE",
+        "problemDescription": "The previous income certificate (INC/2025/1102) was unreadable due to blurriness on page 1 seal.",
+        "requiredAction": "Upload a clear computer-generated copy of Income Certificate for FY 2025-26.",
+        "deadline": "2026-10-15",
+        "status": "RESUBMITTED",
+        "createdAt": "2026-09-20T14:00:00Z",
+        "history": [
+          {
+            "id": "dh_1",
+            "timestamp": "2026-09-20T14:00:00Z",
+            "actor": "Dr. S. P. Hansda (Institute Nodal Officer)",
+            "action": "RAISED",
+            "comment": "Previous income certificate scan was illegible."
+          },
+          {
+            "id": "dh_2",
+            "timestamp": "2026-09-26T16:20:00Z",
+            "actor": "Aarav Kumar (Applicant)",
+            "action": "RESUBMITTED",
+            "comment": "Resubmitted clear digital revenue copy from JharSewa portal.",
+            "documentName": "income_certificate_2026.pdf"
+          }
+        ]
+      },
+      "ruleEvaluations": [
+        {
+          "ruleId": "rule_st_cat",
+          "ruleName": "ST Category Verification",
+          "category": "ST_CATEGORY",
+          "expectedCondition": "Valid ST Certificate from Competent Authority",
+          "observedValue": "Verified Santhal (ST) - Certificate ST/JH/2024/90821",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_min_marks",
+          "ruleName": "Minimum PG Marks Rule (>= 55%)",
+          "category": "ACADEMIC",
+          "expectedCondition": ">= 55.0%",
+          "observedValue": "74.5%",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_income",
+          "ruleName": "Annual Family Income Rule (<= ₹6,00,000)",
+          "category": "INCOME",
+          "expectedCondition": "<= ₹6,00,000",
+          "observedValue": "₹ 2,40,000",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_doc_match",
+          "ruleName": "Cross-Document Identity & Evidence Verification",
+          "category": "DOCUMENT_EVIDENCE",
+          "expectedCondition": "100% Exact Name & Record Alignment across all 4 files",
+          "observedValue": "Variance found in Income Cert (Aarav Kumar Singh vs Aarav Kumar)",
+          "result": "REVIEW",
+          "notes": "Human Officer review required to confirm name variation alias."
+        }
+      ],
+      "timeline": [
+        {
+          "id": "tl_1",
+          "timestamp": "2026-09-12T11:30:00Z",
+          "stage": "SUBMITTED",
+          "actor": "Aarav Kumar",
+          "actorRole": "APPLICANT",
+          "title": "Application Submitted",
+          "description": "Application submitted successfully for NFST scheme (2026.1)."
+        },
+        {
+          "id": "tl_2",
+          "timestamp": "2026-09-12T11:32:00Z",
+          "stage": "DOCUMENT_CHECK",
+          "actor": "PRAGATI AI Pipeline",
+          "actorRole": "ADMIN",
+          "title": "AI Document Processing Complete",
+          "description": "Extracted text from 4 documents. Initial OCR match completed."
+        },
+        {
+          "id": "tl_3",
+          "timestamp": "2026-09-20T14:00:00Z",
+          "stage": "DEFICIENCY",
+          "actor": "Dr. S. P. Hansda",
+          "actorRole": "INSTITUTE",
+          "title": "Deficiency Raised by Institute",
+          "description": "Income Certificate flagged as illegible. Resubmission requested."
+        },
+        {
+          "id": "tl_4",
+          "timestamp": "2026-09-26T16:20:00Z",
+          "stage": "DOCUMENT_CHECK",
+          "actor": "Aarav Kumar",
+          "actorRole": "APPLICANT",
+          "title": "Deficiency Resubmitted",
+          "description": "New income certificate uploaded. AI extraction re-triggered."
+        },
+        {
+          "id": "tl_5",
+          "timestamp": "2026-09-27T10:15:00Z",
+          "stage": "INSTITUTE_VERIFICATION",
+          "actor": "Dr. S. P. Hansda",
+          "actorRole": "INSTITUTE",
+          "title": "Verified & Forwarded by Institute",
+          "description": "IIT Kharagpur scholarship committee verified bonafide academic status."
+        },
+        {
+          "id": "tl_6",
+          "timestamp": "2026-09-27T14:10:00Z",
+          "stage": "OFFICER_REVIEW",
+          "actor": "Rajesh Sharma",
+          "actorRole": "OFFICER",
+          "title": "Assigned to Officer Review Desk",
+          "description": "Application queued for human evidence review and final scheme approval."
+        }
+      ]
+    },
+    {
+      "id": "PRG-2026-00194",
+      "schemeId": "scheme_nfst",
+      "schemeCode": "NFST",
+      "schemeName": "National Fellowship for ST Students",
+      "schemeVersionId": "ver_nfst_2026_1",
+      "applicantId": "usr_app_neha",
+      "applicantName": "Neha Verma",
+      "applicantEmail": "neha.verma.st@gmail.com",
+      "applicantPhone": "+91 99887 76655",
+      "stCertificateNo": "ST/OR/2025/11490",
+      "instituteName": "Utkal University, Bhubaneswar",
+      "instituteCode": "INST-UTKAL-BBSR",
+      "courseName": "Ph.D in Biotechnology",
+      "academicYear": "2026-2027",
+      "marksPercentage": 81.2,
+      "annualFamilyIncome": 180000,
+      "submittedAt": "2026-09-14T09:45:00Z",
+      "updatedAt": "2026-09-25T11:00:00Z",
+      "stage": "SELECTION",
+      "compositeScore": 94.8,
+      "rank": 2,
+      "dynamicData": {
+        "field_pg_marks": 81.2,
+        "field_research_topic": "Bio-extraction of medicinal alkaloids from Endemic Herbal Species of Similipal",
+        "field_guide_name": "Prof. B. C. Nayak",
+        "field_university_reg": "PHD/2026/BIOTECH/012"
+      },
+      "documents": [
+        {
+          "id": "doc_neha_st",
+          "requirementId": "doc_req_st_cert",
+          "documentType": "ST_CERTIFICATE",
+          "fileName": "st_certificate_neha.pdf",
+          "fileSizeMb": 1.1,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-14T09:30:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "name",
+              "extractedValue": "Neha Verma",
+              "expectedValue": "Neha Verma",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "certificateNo",
+              "extractedValue": "ST/OR/2025/11490",
+              "expectedValue": "ST/OR/2025/11490",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        },
+        {
+          "id": "doc_neha_income",
+          "requirementId": "doc_req_income",
+          "documentType": "INCOME_CERTIFICATE",
+          "fileName": "income_certificate_neha.pdf",
+          "fileSizeMb": 1.8,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-14T09:32:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "name",
+              "extractedValue": "Neha Verma",
+              "expectedValue": "Neha Verma",
+              "matchScore": 100,
+              "isMatched": true
+            },
+            {
+              "fieldName": "annualIncome",
+              "extractedValue": "₹ 1,80,000",
+              "expectedValue": "180000",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        }
+      ],
+      "aiFindings": [],
+      "ruleEvaluations": [
+        {
+          "ruleId": "rule_st_cat",
+          "ruleName": "ST Category Verification",
+          "category": "ST_CATEGORY",
+          "expectedCondition": "Valid ST",
+          "observedValue": "Verified Gond (ST)",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_min_marks",
+          "ruleName": "Minimum PG Marks (>= 55%)",
+          "category": "ACADEMIC",
+          "expectedCondition": ">= 55%",
+          "observedValue": "81.2%",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_income",
+          "ruleName": "Annual Family Income (<= ₹6L)",
+          "category": "INCOME",
+          "expectedCondition": "<= ₹6,00,000",
+          "observedValue": "₹ 1,80,000",
+          "result": "PASS"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "tl_n1",
+          "timestamp": "2026-09-14T09:45:00Z",
+          "stage": "SUBMITTED",
+          "actor": "Neha Verma",
+          "actorRole": "APPLICANT",
+          "title": "Application Submitted",
+          "description": "Submitted for NFST."
+        },
+        {
+          "id": "tl_n2",
+          "timestamp": "2026-09-18T14:20:00Z",
+          "stage": "INSTITUTE_VERIFICATION",
+          "actor": "Utkal Nodal Officer",
+          "actorRole": "INSTITUTE",
+          "title": "Verified by Institute",
+          "description": "Bonafide verified."
+        },
+        {
+          "id": "tl_n3",
+          "timestamp": "2026-09-25T11:00:00Z",
+          "stage": "SELECTION",
+          "actor": "Rajesh Sharma",
+          "actorRole": "OFFICER",
+          "title": "Officer Approved & Forwarded to Selection Pool",
+          "description": "Application passed officer verification."
+        }
+      ]
+    },
+    {
+      "id": "PRG-2026-00205",
+      "schemeId": "scheme_nos",
+      "schemeCode": "NOS",
+      "schemeName": "National Overseas Scholarship for ST Students",
+      "schemeVersionId": "ver_nos_2026_1",
+      "applicantId": "usr_app_rahul",
+      "applicantName": "Rahul Singh",
+      "applicantEmail": "rahul.singh.overseas@outlook.com",
+      "applicantPhone": "+91 94311 22334",
+      "stCertificateNo": "ST/CG/2023/50012",
+      "instituteName": "University of Edinburgh",
+      "instituteCode": "INST-FOREIGN-EDI",
+      "courseName": "M.Sc in Data & Artificial Intelligence Ethics",
+      "academicYear": "2026-2027",
+      "marksPercentage": 78,
+      "annualFamilyIncome": 380000,
+      "submittedAt": "2026-09-15T16:10:00Z",
+      "updatedAt": "2026-09-24T09:30:00Z",
+      "stage": "INSTITUTE_VERIFICATION",
+      "dynamicData": {
+        "field_foreign_uni": "University of Edinburgh, United Kingdom",
+        "field_qs_ranking": 27,
+        "field_passport_no": "Z9482103"
+      },
+      "documents": [
+        {
+          "id": "doc_rahul_st",
+          "requirementId": "doc_nos_st",
+          "documentType": "ST_CERTIFICATE",
+          "fileName": "st_certificate_rahul.pdf",
+          "fileSizeMb": 1.5,
+          "fileUrl": "#",
+          "uploadedAt": "2026-09-15T16:00:00Z",
+          "status": "VERIFIED",
+          "extractions": [
+            {
+              "fieldName": "name",
+              "extractedValue": "Rahul Singh",
+              "expectedValue": "Rahul Singh",
+              "matchScore": 100,
+              "isMatched": true
+            }
+          ],
+          "findings": []
+        }
+      ],
+      "aiFindings": [],
+      "ruleEvaluations": [
+        {
+          "ruleId": "rule_nos_st",
+          "ruleName": "ST Category Rule",
+          "category": "ST_CATEGORY",
+          "expectedCondition": "Valid ST",
+          "observedValue": "Verified Oraon (ST)",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_nos_marks",
+          "ruleName": "Min Marks Rule (>= 60%)",
+          "category": "ACADEMIC",
+          "expectedCondition": ">= 60%",
+          "observedValue": "78.0%",
+          "result": "PASS"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "tl_r1",
+          "timestamp": "2026-09-15T16:10:00Z",
+          "stage": "SUBMITTED",
+          "actor": "Rahul Singh",
+          "actorRole": "APPLICANT",
+          "title": "Application Submitted",
+          "description": "Submitted for NOS scheme."
+        }
+      ]
+    },
+    {
+      "id": "PRG-2026-00219",
+      "schemeId": "scheme_topclass",
+      "schemeCode": "TOPCLASS",
+      "schemeName": "Top Class Education Scheme for ST Students",
+      "schemeVersionId": "ver_topclass_2026_1",
+      "applicantId": "usr_app_priya",
+      "applicantName": "Priya Kumari",
+      "applicantEmail": "priya.kumari.iitb@gmail.com",
+      "applicantPhone": "+91 97112 00988",
+      "stCertificateNo": "ST/MP/2024/77109",
+      "instituteName": "Indian Institute of Technology, Bombay",
+      "instituteCode": "INST-IIT-B",
+      "courseName": "B.Tech Computer Science & Engineering",
+      "academicYear": "2026-2027",
+      "marksPercentage": 92.4,
+      "annualFamilyIncome": 150000,
+      "submittedAt": "2026-09-18T10:00:00Z",
+      "updatedAt": "2026-09-27T16:00:00Z",
+      "stage": "DISBURSEMENT_PENDING",
+      "compositeScore": 96.5,
+      "rank": 1,
+      "disbursementStatus": {
+        "pfmsBatchNo": "PFMS/2026/MOTA/89201",
+        "amountRs": 225000,
+        "accountLast4": "4092"
+      },
+      "dynamicData": {
+        "field_jee_rank": 412,
+        "field_tuition_fee": 225000
+      },
+      "documents": [],
+      "aiFindings": [],
+      "ruleEvaluations": [
+        {
+          "ruleId": "rule_tc_st",
+          "ruleName": "ST Category",
+          "category": "ST_CATEGORY",
+          "expectedCondition": "Valid ST",
+          "observedValue": "Bhil (ST)",
+          "result": "PASS"
+        },
+        {
+          "ruleId": "rule_tc_income",
+          "ruleName": "Income Ceiling",
+          "category": "INCOME",
+          "expectedCondition": "<= ₹6,00,000",
+          "observedValue": "₹ 1,50,000",
+          "result": "PASS"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "tl_p1",
+          "timestamp": "2026-09-18T10:00:00Z",
+          "stage": "SUBMITTED",
+          "actor": "Priya Kumari",
+          "actorRole": "APPLICANT",
+          "title": "Application Submitted",
+          "description": "Submitted for Top Class Education."
+        },
+        {
+          "id": "tl_p2",
+          "timestamp": "2026-09-22T14:00:00Z",
+          "stage": "INSTITUTE_VERIFICATION",
+          "actor": "IIT Bombay Registrar",
+          "actorRole": "INSTITUTE",
+          "title": "Verified by Institute",
+          "description": "Tuition fee schedule verified."
+        },
+        {
+          "id": "tl_p3",
+          "timestamp": "2026-09-26T15:30:00Z",
+          "stage": "SELECTION",
+          "actor": "Selection Board",
+          "actorRole": "OFFICER",
+          "title": "Selected & Approved by Board",
+          "description": "Merit Rank 1 approved."
+        },
+        {
+          "id": "tl_p4",
+          "timestamp": "2026-09-27T16:00:00Z",
+          "stage": "DISBURSEMENT_PENDING",
+          "actor": "Finance Division",
+          "actorRole": "OFFICER",
+          "title": "PFMS Direct Benefit Transfer Sent",
+          "description": "Batch PFMS/2026/MOTA/89201 generated."
+        }
+      ]
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1790524025368",
+      "timestamp": "2026-09-27T15:47:05.368Z",
+      "actor": "Aarav Kumar (aarav.st.scholar@gmail.com)",
+      "actorRole": "APPLICANT",
+      "action": "E2E_TEST_COMPLETE",
+      "resource": "Application",
+      "resourceId": "PRG-2026-E2E-5352",
+      "reason": "Completed end-to-end workflow verification test",
+      "ipAddress": "127.0.0.1",
+      "requestId": "REQ-E2E-1790524025368"
+    },
+    {
+      "id": "aud_9081",
+      "timestamp": "2026-09-27T16:00:00Z",
+      "actor": "Finance Division Officer (r.sharma@tribal.gov.in)",
+      "actorRole": "OFFICER",
+      "action": "DISBURSEMENT_STATUS_CHANGE",
+      "resource": "Application",
+      "resourceId": "PRG-2026-00219",
+      "reason": "Initiated DBT transfer batch via PFMS API adapter for ₹2,25,000.",
+      "ipAddress": "10.240.18.92",
+      "requestId": "REQ-PFMS-99812"
+    },
+    {
+      "id": "aud_9080",
+      "timestamp": "2026-09-27T14:10:00Z",
+      "actor": "Officer Rajesh Sharma",
+      "actorRole": "OFFICER",
+      "action": "APPLICATION_STAGE_CHANGE",
+      "resource": "Application",
+      "resourceId": "PRG-2026-00182",
+      "reason": "Moved to Officer Review stage following Institute verification clearance.",
+      "ipAddress": "10.240.18.92",
+      "requestId": "REQ-OFFICER-44102"
+    },
+    {
+      "id": "aud_9079",
+      "timestamp": "2026-09-26T16:20:00Z",
+      "actor": "Applicant Aarav Kumar",
+      "actorRole": "APPLICANT",
+      "action": "DEFICIENCY_RESOLVE_ATTEMPT",
+      "resource": "Deficiency",
+      "resourceId": "def_aarav_01",
+      "reason": "Resubmitted updated Income Certificate document (income_certificate_2026.pdf).",
+      "ipAddress": "49.37.102.14",
+      "requestId": "REQ-APP-77192"
+    },
+    {
+      "id": "aud_9078",
+      "timestamp": "2026-09-20T14:00:00Z",
+      "actor": "Institute Nodal Officer (Dr. S. P. Hansda)",
+      "actorRole": "INSTITUTE",
+      "action": "DEFICIENCY_CREATE",
+      "resource": "Application",
+      "resourceId": "PRG-2026-00182",
+      "reason": "Raised document legibility deficiency for Income Certificate.",
+      "ipAddress": "14.139.221.10",
+      "requestId": "REQ-INST-11029"
+    },
+    {
+      "id": "aud_9077",
+      "timestamp": "2026-09-15T09:00:00Z",
+      "actor": "Admin (Dr. V. K. Meena)",
+      "actorRole": "ADMIN",
+      "action": "SCHEME_PUBLISH",
+      "resource": "SchemeVersion",
+      "resourceId": "ver_nfst_2026_1",
+      "reason": "Published immutable scheme configuration version 2026.1 with updated income ceiling rules.",
+      "ipAddress": "10.240.2.1",
+      "requestId": "REQ-ADMIN-00012"
+    }
+  ]
+}

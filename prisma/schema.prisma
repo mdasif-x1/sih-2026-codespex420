@@ -1,0 +1,228 @@
+// Prisma schema for PRAGATI Scholarship & Fellowship Management System
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   // APPLICANT | INSTITUTE | OFFICER | MONITORING | ADMIN
+  institution  String?
+  department   String?
+  avatar       String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  applications Application[]
+}
+
+model Scheme {
+  id               String   @id @default(cuid())
+  code             String   @unique // e.g. NFST, NOS, TOPCLASS
+  name             String
+  shortDescription String
+  fullDescription  String
+  ministry         String
+  targetCategory   String
+  currentVersionId String
+  startDate        String
+  endDate          String
+  totalSeats       Int?
+  budgetAllocatedCr Float?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  versions         SchemeVersion[]
+  applications     Application[]
+}
+
+model SchemeVersion {
+  id                   String   @id @default(cuid())
+  schemeId             String
+  versionTag           String   // e.g. '2026.1'
+  status               String   // DRAFT | PUBLISHED | DEPRECATED
+  publishedAt          String?
+  publishedBy          String?
+  effectiveFrom        String
+  effectiveTo          String
+  selectionMethod      String   // MERIT_COMPOSITE | INCOME_PRIORITY | DIRECT_VERIFICATION
+  workflowStages       String   // JSON string
+  formFields           String   // JSON string
+  eligibilityRules     String   // JSON string
+  documentRequirements String   // JSON string
+  minMarksPercentage   Float?
+  maxFamilyIncome      Float?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  scheme               Scheme   @relation(fields: [schemeId], references: [id], onDelete: Cascade)
+
+  @@unique([schemeId, versionTag])
+}
+
+model Application {
+  id                 String   @id // e.g. PRG-2026-00182
+  schemeId           String
+  schemeCode         String
+  schemeName         String
+  schemeVersionId    String
+  applicantId        String
+  applicantName      String
+  applicantEmail     String
+  applicantPhone     String
+  stCertificateNo    String
+  instituteName      String
+  instituteCode      String
+  courseName         String
+  academicYear       String
+  marksPercentage    Float
+  annualFamilyIncome Float
+  stage              String   // DRAFT | SUBMITTED | INSTITUTE_VERIFICATION | OFFICER_REVIEW | SELECTION | etc.
+  dynamicData        String   // JSON string
+  compositeScore     Float?
+  rank               Int?
+  pfmsBatchNo        String?
+  amountRs           Float?
+  accountLast4       String?
+  disbursedAt        String?
+  submittedAt        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  scheme             Scheme   @relation(fields: [schemeId], references: [id])
+  applicant          User     @relation(fields: [applicantId], references: [id])
+
+  documents          Document[]
+  aiFindings         AIFinding[]
+  deficiencies       Deficiency[]
+  ruleEvaluations    RuleResult[]
+  timeline           TimelineEvent[]
+
+  @@index([applicantId])
+  @@index([schemeId])
+  @@index([stage])
+  @@index([instituteCode])
+}
+
+model Document {
+  id             String   @id @default(cuid())
+  applicationId  String
+  requirementId String
+  documentType   String
+  fileName       String
+  fileSizeMb     Float
+  fileUrl        String
+  uploadedAt     String
+  status         String   // PROCESSING | VERIFIED | DEFICIENT | FLAGGED
+  extractions    String   // JSON string
+
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  aiFindings     AIFinding[]
+
+  @@index([applicationId])
+}
+
+model AIFinding {
+  id                String   @id @default(cuid())
+  applicationId     String
+  documentId        String
+  documentType      String
+  title             String
+  type              String   // NAME_MISMATCH | INCOME_MISMATCH | EXPIRED_DOCUMENT | etc.
+  expected          String
+  observed          String
+  confidence        Float
+  sourceDocName     String
+  sourcePage        Int?
+  whyFlagged        String
+  recommendedAction String   // MANUAL_REVIEW | RAISE_DEFICIENCY | ACCEPT_VARIANCE
+  status            String   // PENDING_REVIEW | CONFIRMED | DISMISSED | CLARIFICATION_REQUESTED
+  reviewedBy        String?
+  reviewedAt        String?
+  reviewNotes       String?
+  createdAt         DateTime @default(now())
+
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  document          Document    @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@index([status])
+}
+
+model Deficiency {
+  id                 String   @id @default(cuid())
+  applicationId      String
+  documentType       String
+  documentId         String?
+  issueType          String
+  problemDescription String
+  requiredAction     String
+  deadline           String
+  status             String   // ACTION_REQUIRED | RESUBMITTED | RESOLVED
+  history            String   // JSON string
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  application        Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@index([status])
+}
+
+model RuleResult {
+  id                String   @id @default(cuid())
+  applicationId     String
+  ruleId            String
+  ruleName          String
+  category          String
+  expectedCondition String
+  observedValue     String
+  result            String   // PASS | FAIL | REVIEW
+  notes             String?
+  createdAt         DateTime @default(now())
+
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+}
+
+model TimelineEvent {
+  id            String   @id @default(cuid())
+  applicationId String
+  timestamp     String
+  stage         String
+  actor         String
+  actorRole     String
+  title         String
+  description   String
+  notes         String?
+
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  timestamp  String
+  actor      String
+  actorRole  String
+  action     String
+  resource   String
+  resourceId String
+  reason     String?
+  ipAddress  String
+  requestId  String
+
+  @@index([actorRole])
+  @@index([resource])
+  @@index([timestamp])
+}
